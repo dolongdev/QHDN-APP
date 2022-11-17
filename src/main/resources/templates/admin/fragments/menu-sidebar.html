@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block" th:fragment="menu-sidebar">
+    <div class="logo">
+        <a href="#">
+            <img src="admin/images/icon/logo.png" alt="Cool Admin"/>
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li class="active">
+                    <a th:href="@{/admin/accounts}"> <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-table"></i>Accounts</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a th:href="@{/admin/accounts}">All Account</a>
+                        </li>
+                        <li>
+                            <a href="index2.html">Add New</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-desktop"></i>Posts</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a th:href="@{/admin/posts}">All Post</a>
+                        </li>
+                        <li>
+                            <a href="index2.html">Add New</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-desktop"></i>Comments</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->
+
+</body>
+</html>
