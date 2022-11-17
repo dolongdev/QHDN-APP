@@ -60,7 +60,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void deletePost(Integer postId) {
-
+        this.postRepo.deleteById(postId);
     }
 
     @Override
@@ -110,7 +110,9 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post getPostById(Integer postId) {
-        return null;
+        Post post = this.postRepo.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", "Post", postId));
+        return post;
     }
 
     @Override

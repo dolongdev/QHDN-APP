@@ -92,4 +92,12 @@ public class PostController {
 //        return view;
 //    }
 
+    //delete post
+    @GetMapping("delete/{postId}")
+    public String deletePost(Model model,
+                             @PathVariable Integer postId){
+        this.postService.deletePost(postId);
+        return "redirect:/admin/posts";
+    }
+
 }
