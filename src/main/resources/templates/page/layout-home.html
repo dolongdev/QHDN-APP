@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="utf-8">
     <title>Phòng Quan Hệ Doanh Nghiệp - FPT Polytechnic Đà Nẵng</title>
@@ -11,7 +11,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     <div th:replace="/page/fragments/navbar :: navbar"></div>
 
     <!-- content -->
-    <div layout:fragment = "content"></div>
+    <div layout:fragment="content"></div>
     <!-- End Content -->
 
     <div th:replace="/page/fragments/footer :: footer"></div>
@@ -51,4 +51,5 @@
     <!-- Template Javascript -->
     <script th:src="@{/home-stt/js/main.js}"></script>
 </body>
+
 </html>
