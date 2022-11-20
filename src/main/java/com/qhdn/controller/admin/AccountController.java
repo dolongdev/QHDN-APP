@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -30,9 +31,25 @@ public class AccountController {
         return "redirect:/admin/accounts";
     }
 
+    @GetMapping("/update/{username}")
+    public ModelAndView updateAccountForm(Model model,
+    @ModelAttribute Account account,
+    @PathVariable String username){
+            ModelAndView view = new ModelAndView("/admin/account-form");
+
+            Account acc = this.accountService.findById(username);
+            view.addObject("acc", acc);
+
+            // Post postUpdate = this.postService.getPostById(postId);
+            // view.addObject("post", postUpdate);
+
+            return view;
+}
+
     @PostMapping("/add")
     public String addAccount(Model model, @ModelAttribute("account") Account account){
         this.accountService.addAccount(account);
         return "redirect:/admin/accounts";
     }
 }
+

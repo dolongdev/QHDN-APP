@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/admin/layout-admin.html}">
+    layout:decorate="~{/admin/layout-admin.html}">
 
 <head>
     <meta charset="UTF-8">
     <title>Account Management</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
-<div layout:fragment="content">
-    <div class="row">
-        <div class="col-md-12">
-            <!-- DATA TABLE -->
-            <h3 class="title-5 m-b-35">Posts</h3>
-            <div class="table-data__tool">
-                <div class="table-data__tool-left">
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Today</option>
-                            <option value="">3 Days</option>
-                            <option value="">1 Week</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DATA TABLE -->
+                <h3 class="title-5 m-b-35">Posts</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <div class="rs-select2--light rs-select2--sm">
+                            <select class="js-select2" name="time">
+                                <option selected="selected">Today</option>
+                                <option value="">3 Days</option>
+                                <option value="">1 Week</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                        <button class="au-btn-filter">
+                            <i class="zmdi zmdi-filter-list"></i>filters
+                        </button>
                     </div>
-                    <button class="au-btn-filter">
-                        <i class="zmdi zmdi-filter-list"></i>filters
-                    </button>
-                </div>
-                <div class="table-data__tool-right">
-                    <a type="button" th:href="@{/admin/posts/add/form}"
-                       class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>Add New
-                    </a>
+                    <div class="table-data__tool-right">
+                        <a type="button" th:href="@{/admin/posts/add/form}"
+                            class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Add New
+                        </a>
 
+                    </div>
                 </div>
-            </div>
-            <div class="table-responsive table-responsive-data2">
-                <table class="table table-data2">
-                    <thead>
-                    <tr>
-                        <th>
-                            <label class="au-checkbox">
-                                <input type="checkbox"/>
-                                <span class="au-checkmark"></span>
-                            </label>
-                        </th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Categories</th>
-                        <th>Image</th>
-                        <th>Date</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody th:each="p : ${posts}">
-                    <tr class="tr-shadow">
-                        <td>
-                            <label class="au-checkbox">
-                                <input type="checkbox"/>
-                                <span class="au-checkmark"></span>
-                            </label>
-                        </td>
-                        <td><strong th:text="*{p.title}"></strong></td>
-                        <td th:text="*{p.account.username}"></td>
-                        <td th:text="*{p.category.categoryDescription}"></td>
-                        <td><img th:src="@{/images/{image}(image=*{p.imageName})}" alt="" style="width: 80px;"> </td>
-                        <td th:text="*{p.addedDate}"></td>
-                        <td></td>
-                        <td>
-                            <div class="table-data-feature">
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                    <i class="zmdi zmdi-mail-send"></i>
-                                </button>
-                                <a class="item" data-toggle="tooltip"
-                                   th:href="@{/admin/posts/update/{postId}(postId=*{p.postId})}"
-                                   data-placement="top" title="Edit">
-                                    <i class="zmdi zmdi-edit"></i>
-                                </a>
-                                <a class="item" th:href="@{/admin/posts/delete/{postId}(postId=*{p.postId})}"
-                                   data-toggle="tooltip"
-                                   data-placement="top" title="Delete">
-                                    <i class="zmdi zmdi-delete"></i>
-                                </a>
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                    <i class="zmdi zmdi-more"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="spacer"></tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox" />
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Categories</th>
+                                <th>Image</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody th:each="p : ${posts}">
+                            <tr class="tr-shadow">
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox" />
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td><strong th:text="*{p.title}"></strong></td>
+                                <td th:text="*{p.account.username}"></td>
+                                <td th:text="*{p.category.categoryDescription}"></td>
+                                <td><img th:src="@{/images/{image}(image=*{p.imageName})}" alt="" style="width: 80px;">
+                                </td>
+                                <td th:text="*{p.addedDate}"></td>
+                                <td></td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                            <i class="zmdi zmdi-mail-send"></i>
+                                        </button>
+                                        <a class="item" data-toggle="tooltip"
+                                            th:href="@{/admin/posts/update/{postId}(postId=*{p.postId})}"
+                                            data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </a>
+                                        <a class="item" th:href="@{/admin/posts/delete/{postId}(postId=*{p.postId})}"
+                                            data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </a>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-more"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 </body>
 
