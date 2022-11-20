@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -22,6 +21,11 @@ public class HomeController {
                 .getAllPost(0, 6, "addedDate", "esc");
         model.addAttribute("posts", posts);
         return "/page/home";
+    }
+
+    @GetMapping("/about")
+    public String about(){
+        return "/page/about";
     }
 
     @GetMapping("/post/{postId}")

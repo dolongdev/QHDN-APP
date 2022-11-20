@@ -66,11 +66,31 @@ public class PostController {
         return view;
     }
 
+//    @PostMapping("/add")
+//    public ModelAndView addPost(@RequestParam("category") Integer category,
+//                                @RequestParam("username") String username,
+//                                @ModelAttribute Post post) throws Exception{
+//        ModelAndView view = new ModelAndView("/admin/post-form");
+//
+//        Post postNew = this.postService.createPost(post, username, category);
+//        view.addObject("post", postNew);
+//
+//        List<Category> categories = this.categoryService.getAllCategory();
+//        view.addObject("categories", categories);
+//
+//        return view;
+//    }
+
     @PostMapping("/add")
     public ModelAndView addPost(@RequestParam("category") Integer category,
                                 @RequestParam("username") String username,
+                                @RequestParam("imageTitle") MultipartFile image,
                                 @ModelAttribute Post post) throws Exception{
         ModelAndView view = new ModelAndView("/admin/post-form");
+
+        String fileName = this.fileService.uploadImage(path, image);
+        view.addObject("fileName", fileName);
+        post.setImageName(fileName);
 
         Post postNew = this.postService.createPost(post, username, category);
         view.addObject("post", postNew);

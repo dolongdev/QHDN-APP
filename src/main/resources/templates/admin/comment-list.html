@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <!-- DATA TABLE -->
-            <h3 class="title-5 m-b-35">Posts</h3>
+            <h3 class="title-5 m-b-35">Comments</h3>
             <div class="table-data__tool">
                 <div class="table-data__tool-left">
                     <div class="rs-select2--light rs-select2--sm">
@@ -32,11 +32,10 @@
                     </button>
                 </div>
                 <div class="table-data__tool-right">
-                    <a type="button" th:href="@{/admin/posts/add/form}"
-                       class="au-btn au-btn-icon au-btn--green au-btn--small">
+                    <button onclick="document.getElementById('model-account').style.display='block'"
+                            class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>Add New
-                    </a>
-
+                    </button>
                 </div>
             </div>
             <div class="table-responsive table-responsive-data2">
@@ -49,15 +48,14 @@
                                 <span class="au-checkmark"></span>
                             </label>
                         </th>
-                        <th>Title</th>
+                        <th>ID</th>
                         <th>Author</th>
-                        <th>Categories</th>
-                        <th>Image</th>
-                        <th>Date</th>
+                        <th>Comment</th>
+                        <th>PostId</th>
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody th:each="p : ${posts}">
+                    <tbody th:each="c : ${comments}">
                     <tr class="tr-shadow">
                         <td>
                             <label class="au-checkbox">
@@ -65,23 +63,23 @@
                                 <span class="au-checkmark"></span>
                             </label>
                         </td>
-                        <td><strong th:text="*{p.title}"></strong></td>
-                        <td th:text="*{p.account.username}"></td>
-                        <td th:text="*{p.category.categoryDescription}"></td>
-                        <td><img th:src="@{/images/{image}(image=*{p.imageName})}" alt="" style="width: 80px;"> </td>
-                        <td th:text="*{p.addedDate}"></td>
-                        <td></td>
+                        <td th:text="${c.id}"></td>
+                        <td>
+                            <span class="block-email" th:text="${c.account.username}"></span>
+                        </td>
+                        <td class="desc" th:text="${c.content}"></td>
+                        <td th:text="${c.post.postId}"></td>
                         <td>
                             <div class="table-data-feature">
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                     <i class="zmdi zmdi-mail-send"></i>
                                 </button>
-                                <a class="item" data-toggle="tooltip"
-                                   th:href="@{/admin/posts/update/{postId}(postId=*{p.postId})}"
+                                <a onclick="document.getElementById('model-account-update').style.display='block'"
+                                   class="item" data-toggle="tooltip"
                                    data-placement="top" title="Edit">
                                     <i class="zmdi zmdi-edit"></i>
                                 </a>
-                                <a class="item" th:href="@{/admin/posts/delete/{postId}(postId=*{p.postId})}"
+                                <a class="item"
                                    data-toggle="tooltip"
                                    data-placement="top" title="Delete">
                                     <i class="zmdi zmdi-delete"></i>
@@ -100,6 +98,17 @@
     </div>
 </div>
 
+    <script>
+        function loadAccount(id) {
+            $.ajax({
+                type: 'get',
+                url: "@{/api/accounts/"+ id + "}",
+                success: function (data){
+                    $(".update-form").html(data)
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>

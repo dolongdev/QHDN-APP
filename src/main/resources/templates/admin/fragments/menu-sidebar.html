@@ -10,7 +10,7 @@
 <aside class="menu-sidebar d-none d-lg-block" th:fragment="menu-sidebar">
     <div class="logo">
         <a href="#">
-            <img src="admin/images/icon/logo.png" alt="Cool Admin"/>
+            <img th:src="@{administration-stt/images/icon/logo.png}" alt="FPT-ADMIN"/>
         </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
@@ -21,7 +21,7 @@
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-table"></i>Accounts</a>
+                        <i class="fas fa-user-circle"></i>Accounts</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
                             <a th:href="@{/admin/accounts}">All Account</a>
@@ -33,7 +33,7 @@
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Posts</a>
+                        <i class="fas fa-book"></i>Posts</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
                             <a th:href="@{/admin/posts}">All Post</a>
@@ -45,7 +45,15 @@
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>Comments</a>
+                        <i class="fas fa-comment"></i>Comments</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a th:href="@{/admin/posts}">All Comment</a>
+                        </li>
+                        <li>
+                            <a href="index2.html">Add New</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

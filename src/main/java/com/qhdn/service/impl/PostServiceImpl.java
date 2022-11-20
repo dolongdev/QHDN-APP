@@ -54,8 +54,8 @@ public class PostServiceImpl implements PostService {
     public Post updatePost(Post post, Integer postId) {
         Post post1 = this.postRepo.findById(postId)
                 .orElseThrow(() -> new ResourceNotFoundException("Post", "Post", postId));
-
-        return null;
+        this.postRepo.save(post);
+        return post;
     }
 
     @Override

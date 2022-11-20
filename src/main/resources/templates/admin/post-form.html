@@ -34,9 +34,9 @@
 
 <body>
 <div layout:fragment="content">
-    <form th:action="@{/admin/posts/add}" method="post">
-    <div class="row justify-content-md-center">
-        <div class="col-lg-8 border border-white" style="background-color:white;" th:object="${post}">
+    <form th:action="@{/admin/posts/add}" method="post" enctype="multipart/form-data">
+    <div class="row justify-content-md-center" th:object="${post}">
+        <div class="col-lg-8 border border-white" style="background-color:white;">
                 <div class="form-group">
                     <h5 class="mb-4 mt-5">Title</h5>
                     <input th:field="*{title}" type="text" name="title" class="form-control">
@@ -50,18 +50,7 @@
                     <button type="submit" class="btn btn-primary mb-3">Public</button>
                 </div>
         </div>
-        <script>
-            function chooseFile(fileInput) {
-                if (fileInput.files && fileInput.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#image').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(fileInput.files[0]);
-                }
 
-            }
-        </script>
         <div class="col-sm-3 border border-white" style="background-color:white;margin-left: 50px;">
             <div class="form-group mt-5 text-center">
                 <input type="hidden" name="username" th:value="${#request.userPrincipal.principal.username}">
@@ -73,8 +62,8 @@
             <hr>
             <div class="text-center">
                 <div class="mt-5">
-                    <img src="" alt="" id="image" width="200" height="200">
-                    <input type="file" name="image" class="mt-5" id="imageFile" onchange="chooseFile(this)"
+                    <img th:src="@{images/77a601b6-4ae3-480f-8610-61539d6e64dd.jpg}" alt="" id="image" width="200" height="200">
+                    <input type="file" name="imageTitle" class="mt-5" id="imageFile" onchange="chooseFile(this)"
                            accept="image/gif,image/jpeg,image/png" multiple ="true">
                 </div>
             </div>
@@ -92,6 +81,18 @@
             </div>
         </div>
     </div>
+        <script>
+            function chooseFile(fileInput) {
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#image').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+
+            }
+        </script>
     </form>
 
 

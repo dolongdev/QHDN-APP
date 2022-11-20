@@ -6,7 +6,9 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("serial")
 @Data
@@ -23,4 +25,7 @@ public class Account  implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Authority> authorities;
+
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+	private Set<Comment> comments = new HashSet<>();
 }
